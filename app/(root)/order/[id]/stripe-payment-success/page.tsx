@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { getOrderById } from '@/lib/actions/order.actions';
 import Link from 'next/link';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 // import Stripe from 'stripe';
 
 // const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
@@ -13,7 +13,7 @@ const SuccessPage = async (props: {
   searchParams: Promise<{ payment_intent: string }>;
 }) => {
   const { id } = await props.params;
-  const { payment_intent: paymentIntentId } = await props.searchParams;
+  // const { payment_intent: paymentIntentId } = await props.searchParams;
 
   // Fetch order
   const order = await getOrderById(id);

@@ -29,7 +29,7 @@ const OrderDetailsPage = async (props: {
     return redirect('/unauthorized');
   }
 
-  let client_secret = null;
+  const client_secret = null;
 
 
   // NAS: TEMPORARY DISABLE STRIPE
