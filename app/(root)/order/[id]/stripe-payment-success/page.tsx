@@ -1,10 +1,12 @@
+// prostore\app\(root)\order\[id]\stripe-payment-success\page.tsx
+
 import { Button } from '@/components/ui/button';
 import { getOrderById } from '@/lib/actions/order.actions';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
-import Stripe from 'stripe';
+// import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
+// const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
 const SuccessPage = async (props: {
   params: Promise<{ id: string }>;
@@ -17,21 +19,23 @@ const SuccessPage = async (props: {
   const order = await getOrderById(id);
   if (!order) notFound();
 
-  // Retrieve payment intent
-  const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
 
-  // Check if payment intent is valid
-  if (
-    paymentIntent.metadata.orderId == null ||
-    paymentIntent.metadata.orderId !== order.id.toString()
-  ) {
-    return notFound();
-  }
+  // NAS: TEMPOARY DISABLE STRIPE PAYMENT
+  // // Retrieve payment intent
+  // const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
 
-  // Check if payment is successful
-  const isSuccess = paymentIntent.status === 'succeeded';
+  // // Check if payment intent is valid
+  // if (
+  //   paymentIntent.metadata.orderId == null ||
+  //   paymentIntent.metadata.orderId !== order.id.toString()
+  // ) {
+  //   return notFound();
+  // }
 
-  if (!isSuccess) return redirect(`/order/${id}`);
+  // // Check if payment is successful
+  // const isSuccess = paymentIntent.status === 'succeeded';
+
+  // if (!isSuccess) return redirect(`/order/${id}`);
 
   return (
     <div className='max-w-4xl w-full mx-auto space-y-8'>
