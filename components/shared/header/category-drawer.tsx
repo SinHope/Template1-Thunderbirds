@@ -32,7 +32,7 @@ const CategoryDrawer = async () => {
         <DrawerHeader>
           <DrawerTitle>Select a category</DrawerTitle>
           <div className="space-y-1 mt-4">
-            {categories.map((x: any) => (
+            {categories.map((x: { category: string; _count: number }) => (
               <Button
                 variant="ghost"
                 className="w-full justify-start"

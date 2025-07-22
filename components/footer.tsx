@@ -1,4 +1,6 @@
-import { APP_NAME } from '@/lib/constants';
+// prostore\components\footer.tsx
+
+// import { APP_NAME } from '@/lib/constants';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

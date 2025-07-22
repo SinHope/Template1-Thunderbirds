@@ -28,7 +28,7 @@ const Search = async () => {
             <SelectItem key="All" value="all">
               All
             </SelectItem>
-            {categories.map((x: any) => (
+            {categories.map((x: { category: string; _count: number }) => (
               <SelectItem key={x.category} value={x.category}>
                 {x.category}
               </SelectItem>
