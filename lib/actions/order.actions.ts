@@ -2,7 +2,7 @@
 
 'use server';
 
-import { getRedirectError } from 'next/dist/client/components/redirect';
+
 
 import { convertToPlainObject, formatError } from '../utils';
 import { auth } from '@/auth';
@@ -101,9 +101,12 @@ export async function createOrder() {
       redirectTo: `/order/${insertedOrderId}`,
     };
   } catch (error) {
-    if (getRedirectError(error)) throw error;
-    return { success: false, message: formatError(error) };
-  }
+  // Either rethrow all errors
+  // throw error;
+
+  // Or just handle normally
+  return { success: false, message: formatError(error) };
+}
 }
 
 // Get order by id
